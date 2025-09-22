@@ -1,6 +1,9 @@
 {
   "name": "assessment2",
   "version": "1.0.0",
+  "engines": {
+    "node":">=18.0.0"
+  },
   "description": "",
   "main": "app.js",
   "scripts": {

@@ -15,11 +15,12 @@ const transporter = nodemailer.createTransport({
 // Verify SMTP connection at startup
 transporter.verify((error, success) => {
   if (error) {
-    console.error("❌ SMTP verification failed:", error.message);
+    console.warn("⚠️ SMTP verification failed:", error.message);
   } else {
     console.log("✅ SMTP server is ready to send emails");
   }
 });
+
 
 const sendBirthdayEmail = async (user) => {
   const mailOptions = {
@@ -45,3 +46,4 @@ const sendBirthdayEmail = async (user) => {
 };
 
 export default sendBirthdayEmail;
+

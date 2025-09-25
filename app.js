@@ -13,6 +13,11 @@ app.use(express.json());
 
 //Routes
 app.use("/api/user", userRoutes);
+// Test 
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
 
 // MongoDB connection
 mongoose
@@ -22,8 +27,8 @@ mongoose
   })
   .then(() => {
     console.log("MongoDB connected");
-    // Start the birthday cron job after DB connection is established
-    birthdayCron();
+    // // Start the birthday cron job after DB connection is established
+    // birthdayCron();
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 

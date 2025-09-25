@@ -13,11 +13,6 @@ app.use(express.json());
 
 //Routes
 app.use("/api/user", userRoutes);
-// Test 
-app.get('/ping', (req, res) => {
-  res.send('pong');
-});
-
 
 // MongoDB connection
 mongoose
@@ -27,14 +22,14 @@ mongoose
   })
   .then(() => {
     console.log("MongoDB connected");
-    // // Start the birthday cron job after DB connection is established
-    // birthdayCron();
+
+    // Start the server only after DB is ready
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+
+    birthdayCron();
   })
   .catch((err) => console.error("MongoDB connection error:", err));
-
-// Start server
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 

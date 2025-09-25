@@ -11,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.set('trust proxy', 1); //Trust Pipeops
 //Routes
 app.use("/api/user", userRoutes);
 

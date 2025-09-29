@@ -3,7 +3,7 @@ import User from '../models/User.js';
 import sendBirthdayEmail from '../utils/sendBirthdayEmail.js';
 
 const birthdayCron = () => {
-    cron.schedule('* * * * *', async () => {
+    cron.schedule('0 6 * * *', async () => {
         console.log('Running birthday email cron job🎉');
 
         const today = new Date();

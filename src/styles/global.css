@@ -1,97 +1,114 @@
-/* Reset & Base */
-* {
-  box-sizing: border-box;
+/* Global page layout */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #fef3c7, #fde68a);
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f4f8;
-  color: #333;
-  line-height: 1.6;
+/* Shared wrapper for all pages */
+.page-wrapper,
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings */
-h1, h2, h3 {
-  color: #4a6fa5;
-  margin-bottom: 1rem;
-}
-
-/* Form Styling */
-form {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 2rem auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-input[type="text"],
-input[type="email"],
-input[type="date"] {
+/* Logo styling */
+.logo-img {
   display: block;
+  margin: 0 auto 20px auto;
+  max-width: 220px; /* increase size */
   width: 100%;
-  padding: 0.6rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-/* Buttons */
-button {
-  background-color: #4a6fa5;
-  color: white;
+  height: auto;
+  background: none; /* ensures no background is added */
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
-  cursor: pointer;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Headings and text */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+p {
   font-size: 1rem;
-}
-
-button:hover {
-  background-color: #3b5c85;
-}
-
-/* Utility Classes */
-.text-center {
+  color: #555;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.mt-2 {
-  margin-top: 2rem;
+/* Form container (used in Home page) */
+.signup-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
 }
 
-.mb-1 {
-  margin-bottom: 1rem;
+/* Subsections container */
+.subsections {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
 }
 
-/* Subsection Cards */
+/* Each card under subsections */
 .sub-card {
-  background-color: #f0f8ff;
+  background-color: #fef9c3;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.sub-card h2 {
-  margin-bottom: 10px;
-  color: #4a6fa5;
-}
-
+/* Navigation buttons */
 .nav-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4a6fa5;
-  color: white;
+  background-color: #fbbf24;
   border: none;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #3b5c85;
+  background-color: #f59e0b;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
 }

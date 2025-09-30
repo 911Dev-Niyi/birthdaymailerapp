@@ -3,34 +3,24 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import birthdayCron from "./cron/birthdayCron.js";
-
 import userRoutes from "./routes/userRoutes.js";
+
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-app.set('trust proxy', 1); //Trust Pipeops
-//Routes
+app.set('trust proxy', 1);
 app.use("/api/user", userRoutes);
 
 // MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-
-    // Start the server only after DB is ready
-    const PORT = process.env.PORT || 8080;
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-
     birthdayCron();
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// ✅ Export the Express app as a Vercel handler
+export default app;

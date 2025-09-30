@@ -9,10 +9,11 @@ const transporter = nodemailer.createTransport({
     user: process.env.GMAIL_USER,
     pass: process.env.GMAIL_PASS
   },
-  connectionTimeout: 30000
+  connectionTimeout: 10000 // 10 seconds
 });
 
-// Verify SMTP connection at startup
+
+
 transporter.verify((error, success) => {
   if (error) {
     console.warn("⚠️ SMTP verification failed:", error.message);
@@ -21,13 +22,12 @@ transporter.verify((error, success) => {
   }
 });
 
-
 const sendBirthdayEmail = async (user) => {
   const mailOptions = {
-    from: process.env.GMAIL_USER,
+  from: `"Niyi\'s Birthday Mailer" <${process.env.ELASTIC_SENDER_EMAIL}>`,
     to: user.email,
     subject: '🎂 Happy Birthday!',
-    text: `Hey ${user.username}, wishing you a fantastic birthday filled with joy and cake!🎂🎉`
+    html: `<p>Hey ${user.username}, wishing you a fantastic birthday filled with joy and cake! 🎂🎉</p>`
   };
 
   try {
@@ -35,7 +35,6 @@ const sendBirthdayEmail = async (user) => {
     console.log(`📧 Email sent to ${user.email}`);
   } catch (err) {
     console.error(`⚠️ Failed to send email to ${user.email}: ${err.message}`);
-    // Retry once
     try {
       await transporter.sendMail(mailOptions);
       console.log(`🔁 Retry successful for ${user.email}`);
@@ -46,4 +45,3 @@ const sendBirthdayEmail = async (user) => {
 };
 
 export default sendBirthdayEmail;
-
